@@ -14,7 +14,7 @@ app.use(requestIp.mw());
 
 
 app.get('/api/hello',async(req,res)=>{
-    const visitorName = req.query.visitor_name || "Visitor";
+    const visitorName = req.query.visitor_name 
     let clientIp = req.clientIp; 
 
     if (clientIp === '::1') {
@@ -22,6 +22,10 @@ app.get('/api/hello',async(req,res)=>{
       }
 
     try   {       
+
+        if(!visitorName){
+            return res.status(400).json({ error: 'Name is required' });
+        } 
 
         const response = await axios.get(`https://ipapi.co/${clientIp}/json`);
         const ip=response.data.ip
