@@ -29,7 +29,8 @@ app.get('/api/hello',async(req,res)=>{
 
         const response = await axios.get(`https://ipapi.co/${clientIp}/json`);
         const ip=response.data.ip
-        const location=response.data.country_name
+        const location=response.data.city
+        console.log(response.data);
         console.log('IPinfo response:', response.data.ip)
 
 
