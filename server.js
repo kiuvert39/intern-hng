@@ -15,7 +15,7 @@ app.use(requestIp.mw());
 
 app.get('/api/hello',async(req,res)=>{
     const visitorName = req.query.visitor_name 
-    let clientIp = req.clientIp; 
+    let clientIp = req.ip; 
 
     if (clientIp === '::1') {
         clientIp = '129.0.60.27';
